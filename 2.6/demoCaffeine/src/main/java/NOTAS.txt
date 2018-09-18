@@ -1,0 +1,39 @@
+Caffeine:
+--------
+
+	Es una libreria para la gestion de cache.
+	
+	Una cache es similar a un ConcurrentMap, pero no tan similar. La mayor diferencia es que ConcurrentMap persiste todos los elementos que son añadidos hasta que
+	explicitamente ellos son removidos. Una Cache, en contraposicion, es generalmente configurada para desalojar entradas automaticamente, con el objetivo de evitar
+	inpactos en la memoria. En algunos casos el LoadingCache o AsyncLoadingCache pueden ser utiles incluso si no se desalojan entradas, debido a su carga automatica
+	de cache.
+
+	Caffeine provee una flexible construccion para crear Cache con una combinacion de las siguientes caracteristicas:
+	
+	- Carga automatica de entradas en la cache, opcionalmente podria ser asincrona.
+	- Desalojo basado en el size, cuando el maximo es excedido basado en la frecuencia y actualidad.
+	- Expiracion de entrys basada en el tiempo, medido desde el ultimo acceso o la ultima escritura.
+	- Actualizacion asincrona, cuando la primera solicitud obsoleta para una entrada ocurre.
+	- Notificacion de desalojo.
+	- Escrituras programadas hacia un recurso externo.
+	- Sopoorte de integracion con JSR-107 JCache a traves de modulos externos. 
+	
+	
+	Poblacion:
+	---------
+	
+		Caffeine posee tres estrategias de poblacion: manual, carga sincrona y carga asincrona.
+		
+		Manual:
+		------
+			
+			Se realiza mediante la interface Cache, esta permite el control explicito de recuperacion, actualizacion e invalidacion de entradas.
+			Las entradas pueden ser insertadas directamente en la cache por medio de cache.put(key,value), este sobreescribe cualquier entrada previa en la cache
+			para la clave especificada. 
+	
+	
+URLs:
+	[1] https://github.com/ben-manes/caffeine/wiki
+	[2] https://github.com/ben-manes/caffeine/wiki/Population
+	
+	
