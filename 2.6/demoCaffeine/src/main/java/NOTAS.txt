@@ -3,7 +3,7 @@ Caffeine:
 
 	Es una libreria para la gestion de cache.
 	
-	Una cache es similar a un ConcurrentMap, pero no tan similar. La mayor diferencia es que ConcurrentMap persiste todos los elementos que son añadidos hasta que
+	Una cache es similar a un ConcurrentMap, pero no tan similar. La mayor diferencia es que ConcurrentMap persiste todos los elementos que son aï¿½adidos hasta que
 	explicitamente ellos son removidos. Una Cache, en contraposicion, es generalmente configurada para desalojar entradas automaticamente, con el objetivo de evitar
 	inpactos en la memoria. En algunos casos el LoadingCache o AsyncLoadingCache pueden ser utiles incluso si no se desalojan entradas, debido a su carga automatica
 	de cache.
@@ -30,7 +30,18 @@ Caffeine:
 			Se realiza mediante la interface Cache, esta permite el control explicito de recuperacion, actualizacion e invalidacion de entradas.
 			Las entradas pueden ser insertadas directamente en la cache por medio de cache.put(key,value), este sobreescribe cualquier entrada previa en la cache
 			para la clave especificada. 
-	
+		
+		Loading:
+		-------
+			
+			Se realiza mendiante la interface LoadingCache, es construida necesariamente mediante una CacheLoader, Busquedas masivas pueden ser realizadas mediante el 
+			metodo getAll. Por defecto, getAll emitira una llamada por separado a CacheLoader.load para cada clave que este ausente en la cache. Cuando la recuperacion 
+			masiva es mas eficiente que muchas busquedas individuales, puede sobreescribir CacheLoader.loadAll para explotar esto.
+			
+		Asynchronous:
+		------------
+			
+			Es una variante de Loading Cache, que computa las entradas sobre un Executor y retorna un CompletableFuture. 
 	
 URLs:
 	[1] https://github.com/ben-manes/caffeine/wiki
